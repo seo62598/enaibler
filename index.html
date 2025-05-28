@@ -90,10 +90,28 @@
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
-            width: 50%;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 100%);
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+            background-size: 800px 800px, 600px 600px;
+            background-position: 0% 0%, 100% 100%;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="60" height="60" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
             pointer-events: none;
         }
         
@@ -105,7 +123,13 @@
             min-height: 70vh;
             padding: 4rem 0;
             position: relative;
-            z-index: 2;
+            z-index: 3;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
         
         .hero-text h1 {
@@ -175,7 +199,6 @@
         .btn-primary {
             background: var(--success-green);
             color: var(--white);
-            margin-right: 1rem;
         }
         
         .btn-primary:hover {
@@ -203,6 +226,18 @@
         .btn-outline:hover {
             background: var(--primary-blue);
             color: var(--white);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+            
+            .hero-buttons .btn {
+                text-align: center;
+            }
         }
         
         /* Sections */
@@ -447,7 +482,95 @@
             line-height: 1.6;
         }
         
-        /* Responsive */
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .popup-overlay.active {
+            display: flex;
+        }
+        
+        .popup-content {
+            background: var(--white);
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 80vh;
+            width: 90%;
+            padding: 2rem;
+            position: relative;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .popup-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin: 0;
+        }
+        
+        .popup-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-gray);
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        
+        .popup-close:hover {
+            background: var(--light-gray);
+        }
+        
+        .popup-body {
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        .popup-body h3 {
+            color: var(--primary-blue);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+        }
+        
+        .popup-body p {
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .popup-content {
+                width: 95%;
+                padding: 1.5rem;
+                max-height: 90vh;
+            }
+            
+            .popup-title {
+                font-size: 1.25rem;
+            }
+        }
         @media (max-width: 768px) {
             .container {
                 padding: 0 15px;
@@ -511,7 +634,7 @@
                     <a href="#problem">Problem</a>
                     <a href="#solution">Lösung</a>
                     <a href="#results">Erfolge</a>
-                    <a href="#cta" class="btn btn-outline">Termin buchen</a>
+                    <a href="https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/" class="btn btn-outline" target="_blank">Termin buchen</a>
                 </nav>
             </div>
         </div>
@@ -527,8 +650,10 @@
                     <div class="description">
                         Schluss mit Excel-Chaos, Unsicherheiten und verlorenen Potenzialen. <strong>en[ai]bler</strong> liefert Ihnen die entscheidungsrelevanten Zahlen auf Knopfdruck – direkt aus Ihren DATEV-Daten. Ohne IT-Projekt, ohne Schulungs-Marathon.
                     </div>
-                    <a href="#cta" class="btn btn-primary">Jetzt kostenfreies Analysegespräch</a>
-                    <a href="#solution" class="btn btn-secondary">Mehr erfahren</a>
+                    <div class="hero-buttons">
+                        <a href="https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/" class="btn btn-primary" target="_blank">Jetzt kostenfreies Analysegespräch</a>
+                        <a href="#solution" class="btn btn-secondary">Mehr erfahren</a>
+                    </div>
                 </div>
                 <div class="hero-image">
                     <!-- Ersetzen Sie den Placeholder durch Ihr echtes Bild: -->
@@ -593,7 +718,7 @@
                     <div class="feature-text">Für jede Auswertung müssen Daten aus unterschiedlichen Quellen mühsam zusammengetragen werden</div>
                 </li>
             </ul>
-            <div style="text-align: center; font-size: 1.25rem; font-weight: 600; color: var(--primary-blue); margin-top: 2rem;">
+            <div style="text-align: center; font-size: 2rem; font-weight: 600; color: var(--primary-blue); margin-top: 3rem; padding: 2rem; background: var(--white); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
                 Viele Kanzleien steuern im Blindflug – mit hohem Aufwand und ungenutztem Potenzial.
             </div>
         </div>
@@ -693,11 +818,11 @@
             <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.95;">
                 Erfahren Sie, welche Mandate sich wirklich lohnen, wo Ressourcen verloren gehen, und wie Sie Ihre Kanzlei gezielt steuern können – auf Basis echter Zahlen.
             </p>
-            <a href="mailto:kontakt@enaibler.de?subject=Kostenfreies Analysegespräch&body=Hallo, ich interessiere mich für ein kostenfreies Analysegespräch für meine Steuerberatungskanzlei." class="btn btn-primary">
+            <a href="https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/" class="btn btn-primary" target="_blank">
                 👉 Jetzt Termin vereinbaren
             </a>
             <div class="contact-info">
-                <p>📧 kontakt@enaibler.de | 📞 Rückruf innerhalb 24h</p>
+                <p>📧 kontakt@enaibler.info | 📞 Rückruf innerhalb 24h</p>
             </div>
         </div>
     </section>
@@ -709,8 +834,107 @@
             <div class="footer-text">
                 Machen Sie sich und Ihr Unternehmen fit für die Herausforderungen von morgen.
             </div>
+            <div class="footer-links">
+                <a href="#" onclick="openPopup('impressum'); return false;">Impressum</a>
+                <a href="#" onclick="openPopup('datenschutz'); return false;">Datenschutz</a>
+            </div>
         </div>
     </footer>
+
+    <!-- Impressum Popup -->
+    <div id="impressum-popup" class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 class="popup-title">Impressum</h2>
+                <button class="popup-close" onclick="closePopup('impressum')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <h3>Verantwortlich im Sinne des Pressegesetzes</h3>
+                <p>
+                    <strong>RSW Unternehmensberatung GmbH</strong><br>
+                    Heganger 14<br>
+                    D-96103 Hallstadt<br>
+                    Herr Azher Raschid<br>
+                    Tel. +49-951 – 9 15 15 0<br>
+                    Fax +49-951 – 9 15 15 11<br>
+                    E-Mail info@rswnext.de
+                </p>
+
+                <h3>Nach DL-InfoV und nach § 36 VSBG</h3>
+                <p>Die RSW Unternehmensberatung GmbH wird in der Rechtsform der Gesellschaft mit beschränkter Haftung (GmbH) betrieben und ist beim Amtsgericht Bamberg unter der Nummer HRB 8597 im Handelsregister eingetragen. Die Umsatzsteueridentifikations-Nr. lautet: DE132277241.</p>
+                
+                <p>Geschäftsführer ist Herr Azher Raschid</p>
+                
+                <p>Die Gesellschaft wird jeweils einzelvertretungsberechtigt durch den Geschäftsführer Herr Azher Raschid vertreten.</p>
+
+                <h3>Vermittlung/Schlichtung</h3>
+                <p>Es besteht keine Bereitschaft oder Verpflichtung an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle im Sinne des § 2 des Verbraucherstreitbeilegungsgesetz (VSBG) teilzunehmen.</p>
+
+                <h3>Anzuwendendes Recht und Erfüllungsort</h3>
+                <p>Für den Auftrag, seine Ausführung und die sich hieraus ergebenden Ansprüche gilt nur deutsches Recht. Erfüllungsort ist der Wohnsitz des Auftraggebers, wenn er nicht Kaufmann im Sinne des HGB ist, ansonsten der Sitz der RSW Unternehmensberatung GmbH.</p>
+
+                <h3>Urheberrecht</h3>
+                <p>Das Internet ist kein rechtsfreier Raum. Auch hier gelten Urheberrechte (UrhG: Urheberrechtsgesetz). Ein Verstoß gegen diese Rechte ist strafbar.</p>
+                
+                <p>Der Inhalt unserer Internetseiten ist urheberrechtlich geschützt. D.h. die RSW Unternehmensberatung GmbH hat das alleinige Verfügungsrecht darüber,</p>
+                <ul>
+                    <li>ob ihre Werke veröffentlicht werden dürfen.</li>
+                    <li>in welcher Art und Weise Werke veröffentlicht werden.</li>
+                    <li>zu welchem Zeitpunkt Werke erstmals veröffentlicht werden.</li>
+                    <li>ob bei der Verwertung der Werke der Name des Urhebers oder sein Pseudonym genannt werden müssen.</li>
+                </ul>
+                
+                <p>Das Urheberrecht verbietet ferner die Speicherung und Vervielfältigung von Bildmaterial oder Grafiken aus unseren Internetseiten.</p>
+
+                <h3>Haftungsausschluss</h3>
+                <h4>Inhalt des Onlineangebotes</h4>
+                <p>Die Inhalte dieser Internetseite sind ausschließlich dazu gedacht, als allgemeine Richtlinie und Orientierung für den persönlichen Interessensbereich des Benutzers zu dienen, wobei dieser für die Weiterverwendung der Informationen selbst verantwortlich ist. Die Informationen werden mit dem Grundverständnis gegeben, dass der Herausgeber auf diesem Weg keine rechtlichen, betriebswirtschaftlichen, steuerlichen oder andere professionellen Ratschläge bzw. Dienstleistungen erteilt.</p>
+                
+                <p>Der Herausgeber übernimmt keinerlei Gewähr für die Aktualität, Korrektheit, Vollständigkeit oder Qualität der bereitgestellten Informationen. Haftungsansprüche gegen den Herausgeber, welche sich auf Schäden beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen.</p>
+
+                <h4>Verweise und Links</h4>
+                <p>Sofern auf Verweisziele („Links") direkt oder indirekt verwiesen wird, die außerhalb des Verantwortungsbereiches des Herausgebers liegen, haftet für deren Inhalt und insbesondere für Schäden, die aus der Nutzung oder Nichtnutzung der dort dargebotenen Informationen entstehen, allein der Anbieter dieser Seiten, nicht derjenige, der über Links auf die jeweilige Veröffentlichung lediglich verweist.</p>
+
+                <h4>Urheber- und Kennzeichenrecht</h4>
+                <p>Alle innerhalb des Internetangebots genannten und ggf. durch Dritte geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten der jeweiligen eingetragenen Eigentümer.</p>
+
+                <h4>Rechtswirksamkeit dieses Haftungsausschlusses</h4>
+                <p>Dieser Haftungsausschluss ist als Teil des Internetangebotes zu betrachten, von dem aus auf diese Seite verwiesen wurde. Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden Rechtslage nicht, nicht mehr oder nicht vollständig entsprechen sollten, bleiben die übrigen Teile des Dokuments in ihrem Inhalt und ihrer Gültigkeit davon unberührt.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Datenschutz Popup -->
+    <div id="datenschutz-popup" class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 class="popup-title">Datenschutzerklärung</h2>
+                <button class="popup-close" onclick="closePopup('datenschutz')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <h3>Datenschutz</h3>
+                <p>Wir haben diese Datenschutzerklärung (Fassung 01.01.2022-122145256) verfasst, um Ihnen gemäß der Vorgaben der Datenschutz-Grundverordnung (EU) 2016/679 und anwendbaren nationalen Gesetzen zu erklären, welche personenbezogenen Daten (kurz Daten) wir als Verantwortliche – und die von uns beauftragten Auftragsverarbeiter (z. B. Provider) – verarbeiten, zukünftig verarbeiten werden und welche rechtmäßigen Möglichkeiten Sie haben.</p>
+
+                <h3>Verantwortliche Stelle</h3>
+                <p>
+                    <strong>RSW Unternehmensberatung GmbH</strong><br>
+                    Heganger 14<br>
+                    D-96103 Hallstadt<br>
+                    E-Mail: info@rswnext.de<br>
+                    Tel.: +49-951 – 9 15 15 0
+                </p>
+
+                <h3>Erhebung und Verarbeitung personenbezogener Daten</h3>
+                <p>Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist. Die Verarbeitung personenbezogener Daten unserer Nutzer erfolgt regelmäßig nur nach Einwilligung des Nutzers.</p>
+
+                <h3>Ihre Rechte</h3>
+                <p>Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden sind, können Sie sich bei der Aufsichtsbehörde beschweren.</p>
+
+                <h3>Kontakt</h3>
+                <p>Falls Sie Fragen zum Datenschutz haben, schreiben Sie uns gerne eine E-Mail oder wenden Sie sich direkt an die für den Datenschutz verantwortliche Person in unserer Organisation.</p>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Smooth scrolling for anchor links
