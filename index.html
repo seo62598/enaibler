@@ -3,806 +3,660 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>en[ai]bler - Software für Steuerberater | Kanzleisoftware DATEV</title>
-    <meta name="description" content="en[ai]bler - Die Software für Steuerberater. Mandatsrentabilität, Mitarbeiterauslastung und Kanzleisteuerung direkt aus DATEV-Daten. Kostenfreies Analysegespräch buchen.">
+    <title>en[ai]bler - Kanzlei-Software von Steuerberatern für Steuerberater</title>
+    <meta name="description" content="Schluss mit Excel-Chaos! en[ai]bler zeigt Ihnen die Rentabilität Ihrer Mandate und optimiert Ihre Kanzleisteuerung - direkt aus DATEV-Daten.">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        :root {
-            --primary-blue: #0066cc;
-            --secondary-blue: #004499;
-            --light-blue: #f0f8ff;
-            --accent-blue: #3399ff;
-            --dark-navy: #1a365d;
-            --white: #ffffff;
-            --light-gray: #f8f9fa;
-            --medium-gray: #e9ecef;
-            --text-dark: #2d3748;
-            --text-gray: #718096;
-            --success-green: #38a169;
-        }
-        
+
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--white);
+            color: #333;
+            background-color: #f8f9fa;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         /* Header */
-        .header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
-        
+
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-blue);
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffffff;
         }
-        
-        .nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .nav a {
+
+        .cta-button {
+            background: #f59e0b;
+            color: white;
+            padding: 12px 24px;
             text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s ease;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
-        
-        .nav a:hover {
-            color: var(--primary-blue);
+
+        .cta-button:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
-        
+
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: var(--white);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+            color: white;
+            padding: 80px 0;
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
-            background-size: 800px 800px, 600px 600px;
-            background-position: 0% 0%, 100% 100%;
-            opacity: 0.6;
-            pointer-events: none;
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="60" height="60" fill="url(%23grid)"/></svg>');
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 0 0 L 10 0 M 0 0 L 0 10" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
             opacity: 0.3;
-            pointer-events: none;
         }
-        
+
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 60px;
             align-items: center;
-            min-height: 70vh;
-            padding: 4rem 0;
             position: relative;
-            z-index: 3;
+            z-index: 2;
         }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
+
         .hero-text h1 {
-            font-size: 2.75rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            color: var(--white);
-        }
-        
-        .hero-text .subtitle {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: rgba(255, 255, 255, 0.95);
-        }
-        
-        .hero-text .description {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .hero-placeholder {
-            width: 100%;
-            height: 400px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-        
-        .hero-placeholder-icon {
             font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.7;
-        }
-        
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-        }
-        
-        .btn-primary {
-            background: var(--success-green);
-            color: var(--white);
-        }
-        
-        .btn-primary:hover {
-            background: #2f855a;
-            transform: translateY(-1px);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--primary-blue);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary-blue);
-            color: var(--white);
-        }
-        
-        @media (max-width: 768px) {
-            .hero-buttons {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 1rem;
-            }
-            
-            .hero-buttons .btn {
-                text-align: center;
-            }
-        }
-        
-        /* Sections */
-        .section {
-            padding: 5rem 0;
-        }
-        
-        .section-gray {
-            background: var(--light-gray);
-        }
-        
-        .section-blue {
-            background: var(--light-blue);
-        }
-        
-        h2 {
-            font-size: 2.25rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
             font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-            text-align: center;
         }
-        
-        h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary-blue);
-        }
-        
-        .section-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-gray);
-            text-align: center;
-            margin-bottom: 3rem;
+
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #e0f2fe;
             font-weight: 500;
         }
-        
-        /* Problem Cards */
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #f0f9ff;
+        }
+
+        .hero-image {
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-placeholder-image {
+            width: 100%;
+            max-width: 500px;
+            height: 350px;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            color: #64748b;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border: 2px dashed #cbd5e1;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #1e40af;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: white;
+        }
+
         .problem-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 40px;
         }
-        
+
+        @media (max-width: 768px) {
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .problem-card {
-            background: var(--white);
-            padding: 2rem;
+            background: #fef8f8;
+            padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #f87171;
         }
-        
-        .problem-card:hover {
+
+        .problem-card h3 {
+            color: #374151;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: #f8fafc;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
         }
-        
-        .problem-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
-            color: var(--white);
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #10b981, #059669);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon::before {
+            content: '✓';
+            color: white;
             font-size: 1.5rem;
-            margin: 0 auto 1.5rem auto;
+            font-weight: bold;
         }
-        
-        /* Solution Features */
-        .features-list {
-            max-width: 800px;
-            margin: 3rem auto;
-            list-style: none;
+
+        /* Results Section */
+        .results {
+            background: white;
         }
-        
-        .features-list li {
-            display: flex;
-            align-items: flex-start;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--medium-gray);
-        }
-        
-        .features-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .check-icon {
-            color: var(--success-green);
-            font-size: 1.25rem;
-            margin-right: 1rem;
-            margin-top: 0.25rem;
-            flex-shrink: 0;
-        }
-        
-        .feature-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        /* Stats */
-        .stats-section {
-            background: var(--primary-blue);
-            color: var(--white);
-        }
-        
-        .stats-grid {
+
+        .results-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
-        
-        .stat-item {
+
+        .result-card {
             text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #fef3c7, #fbbf24);
+            border-radius: 12px;
         }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--white);
-            display: block;
-            margin-bottom: 0.5rem;
+
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 10px;
         }
-        
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-        
-        /* Testimonial */
+
         .testimonial {
-            background: var(--white);
-            padding: 3rem;
+            background: #f1f5f9;
+            padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            margin: 3rem auto;
-            max-width: 800px;
-            text-align: center;
-        }
-        
-        .testimonial-text {
-            font-size: 1.25rem;
+            margin-top: 40px;
             font-style: italic;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--text-gray);
-        }
-        
-        /* Steps */
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        
-        .step-item {
-            background: var(--white);
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             text-align: center;
             position: relative;
         }
-        
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: #cbd5e1;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+        }
+
+        /* Process Section */
+        .process {
+            background: #f8fafc;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .process-step {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
         .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--primary-blue);
-            color: var(--white);
+            width: 50px;
+            height: 50px;
+            background: #1e40af;
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             font-weight: bold;
-            margin: 0 auto 1.5rem auto;
+            margin: 0 auto 20px;
         }
-        
-        .step-item h3 {
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-        
-        .step-item p {
-            color: var(--text-gray);
-            line-height: 1.6;
-        }
-        
+
         /* CTA Section */
-        .cta-section {
-            background: var(--primary-blue);
-            color: var(--white);
+        .final-cta {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
             text-align: center;
         }
-        
-        .cta-section h2 {
-            color: var(--white);
-            margin-bottom: 1.5rem;
-        }
-        
-        .cta-section .btn-primary {
-            background: var(--success-green);
-            font-size: 1.125rem;
-            padding: 16px 32px;
-        }
-        
-        .contact-info {
-            margin-top: 2rem;
-            opacity: 0.9;
-        }
-        
-        /* Footer */
-        .footer {
-            background: var(--dark-navy);
-            color: var(--white);
-            padding: 3rem 0 2rem;
-            text-align: center;
-        }
-        
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-text {
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
-            line-height: 1.6;
-        }
-        
-        /* Popup Styles */
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-        
-        .popup-overlay.active {
-            display: flex;
-        }
-        
-        .popup-content {
-            background: var(--white);
-            border-radius: 12px;
+
+        .cta-content {
             max-width: 800px;
-            max-height: 80vh;
-            width: 90%;
-            padding: 2rem;
-            position: relative;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
         }
-        
-        .popup-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--medium-gray);
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
         }
-        
-        .popup-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin: 0;
+
+        .cta-large {
+            background: #f59e0b;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 30px;
+            transition: all 0.3s ease;
         }
-        
-        .popup-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-gray);
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: background 0.3s ease;
+
+        .cta-large:hover {
+            background: #d97706;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
         }
-        
-        .popup-close:hover {
-            background: var(--light-gray);
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
         }
-        
-        .popup-body {
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
-        
-        .popup-body h3 {
-            color: var(--primary-blue);
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            font-size: 1.125rem;
-        }
-        
-        .popup-body p {
-            margin-bottom: 1rem;
-        }
-        
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .popup-content {
-                width: 95%;
-                padding: 1.5rem;
-                max-height: 90vh;
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
             }
-            
-            .popup-title {
-                font-size: 1.25rem;
+
+            .hero-text h1 {
+                font-size: 2.2rem;
             }
-        }
-        @media (max-width: 768px) {
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
             .container {
                 padding: 0 15px;
             }
-            
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
-                min-height: auto;
-                padding: 3rem 0;
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
             }
-            
-            .hero-text h1 {
-                font-size: 2.25rem;
-            }
-            
-            h2 {
-                font-size: 1.875rem;
-            }
-            
-            .section {
-                padding: 3rem 0;
-            }
-            
-            .problem-grid,
-            .stats-grid,
-            .steps-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-placeholder {
-                height: 300px;
-            }
-            
-            .nav {
-                display: none;
+
+            .dashboard-preview {
+                max-width: 350px;
+                height: 280px;
+                padding: 15px;
             }
         }
-        
-        /* Subtle animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
         }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .modal h2 {
+            color: #1e40af;
+            margin-bottom: 20px;
+        }
+
+        .modal h3 {
+            color: #374151;
+            margin: 20px 0 10px 0;
+        }
+
+        .modal p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+        }
+
+        .warning-banner {
+            background: linear-gradient(135deg, #fef3c7, #fbbf24);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+            border-left: 4px solid #f59e0b;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.2);
+        }
+
+        .warning-banner p {
+            font-size: 1.2rem;
+            color: #92400e;
+            font-weight: 600;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .warning-emoji {
+            font-size: 1.4rem;
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mb-20 { margin-bottom: 20px; }
+        .mb-40 { margin-bottom: 40px; }
+        .bold { font-weight: bold; }
+        .highlight { color: #f59e0b; }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">en[ai]bler</div>
-                <nav class="nav">
-                    <a href="#problem">Problem</a>
-                    <a href="#solution">Lösung</a>
-                    <a href="#results">Erfolge</a>
-                    <a href="https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/" class="btn btn-outline" target="_blank">Termin buchen</a>
-                </nav>
+                <a href="#cta" class="cta-button">Kostenfreies Analysegespräch</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Wissen Sie, wo Ihre Kanzlei wirklich Geld verdient?</h1>
-                    <div class="subtitle">Von Steuerberatern für Steuerberater – eine Software, die Kanzleien messbar besser macht.</div>
-                    <div class="description">
-                        Schluss mit Excel-Chaos, Unsicherheiten und verlorenen Potenzialen. <strong>en[ai]bler</strong> liefert Ihnen die entscheidungsrelevanten Zahlen auf Knopfdruck – direkt aus Ihren DATEV-Daten. Ohne IT-Projekt, ohne Schulungs-Marathon.
-                    </div>
-                    <div class="hero-buttons">
-                        <a href="https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/" class="btn btn-primary" target="_blank">Jetzt kostenfreies Analysegespräch</a>
-                        <a href="#solution" class="btn btn-secondary">Mehr erfahren</a>
-                    </div>
+                    <p class="subtitle">Von Steuerberatern für Steuerberater – eine Software, die Kanzleien messbar besser macht.</p>
+                    <p>Schluss mit Excel-Chaos, Unsicherheiten und verlorenen Potenzialen. <strong>en[ai]bler</strong> liefert Ihnen die entscheidungsrelevanten Zahlen auf Knopfdruck – direkt aus Ihren DATEV-Daten. Ohne IT-Projekt, ohne Schulungs-Marathon.</p>
+                    <a href="#cta" class="cta-button">Jetzt Termin vereinbaren</a>
                 </div>
                 <div class="hero-image">
-                    <!-- Ersetzen Sie den Placeholder durch Ihr echtes Bild: -->
-                    <!-- <img src="path/to/your/dashboard-screenshot.png" alt="en[ai]bler Dashboard Screenshot"> -->
-                    <div class="hero-placeholder">
-                        <div class="hero-placeholder-icon">📊</div>
-                        <div>
-                            <strong>Dashboard Screenshot</strong><br>
-                            Hier wird Ihr en[ai]bler<br>
-                            Dashboard-Screenshot eingefügt
-                        </div>
+                    <div class="hero-placeholder-image">
+                        📊 Dashboard Vorschau<br>
+                        <small>(Bild hier einfügen)</small>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Problem Recognition Section -->
-    <section class="section section-gray" id="problem">
+    <section class="section">
         <div class="container">
-            <h2>Was Ihre Kollegen schon längst erkannt haben</h2>
-            <div class="problem-grid">
-                <div class="problem-card fade-in">
-                    <div class="problem-icon">⚠️</div>
-                    <h3>Versteckte Verluste</h3>
+            <div class="section-header">
+                <h2>Was Ihre Kollegen schon längst erkannt haben</h2>
+            </div>
+            <div class="features-grid">
+                <div class="problem-card">
+                    <h3>📉 Versteckte Verluste</h3>
                     <p>In vielen Kanzleien gibt es Mandate, die still und leise Verluste verursachen</p>
                 </div>
-                <div class="problem-card fade-in">
-                    <div class="problem-icon">💰</div>
-                    <h3>Veraltete Honorare</h3>
+                <div class="problem-card">
+                    <h3>💰 Veraltete Honorare</h3>
                     <p>Honorare sind oft historisch gewachsen – und längst nicht mehr kostendeckend</p>
                 </div>
-                <div class="problem-card fade-in">
-                    <div class="problem-icon">👥</div>
-                    <h3>Fehlende Transparenz</h3>
-                    <p>Kanzleiinhaber haben keine Live-Sicht darauf, wo Überlastung entsteht oder Kapazitäten frei sind</p>
+                <div class="problem-card">
+                    <h3>👁️ Fehlende Transparenz</h3>
+                    <p>Kanzleiinhaber haben keine Live-Sicht darauf, <strong>wo Überlastung entsteht oder Kapazitäten frei sind</strong></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Problem Details Section -->
-    <section class="section">
+    <section class="section problem">
         <div class="container">
-            <h2>Das Problem im Kanzleialltag</h2>
-            <p class="section-subtitle">Sie kennen das vielleicht:</p>
-            <ul class="features-list">
-                <li>
-                    <span class="check-icon">❌</span>
-                    <div class="feature-text">Es ist unklar, <strong>wer was wann erledigt</strong> – Abstimmungen kosten täglich Zeit und Nerven</div>
-                </li>
-                <li>
-                    <span class="check-icon">❌</span>
-                    <div class="feature-text"><strong>Mandatsrentabilität</strong> ist ein Ratespiel – echte Zahlen fehlen</div>
-                </li>
-                <li>
-                    <span class="check-icon">❌</span>
-                    <div class="feature-text">Entscheidungen basieren oft auf <strong>Gefühl statt auf Daten</strong></div>
-                </li>
-                <li>
-                    <span class="check-icon">❌</span>
-                    <div class="feature-text">Für jede Auswertung müssen Daten aus unterschiedlichen Quellen mühsam zusammengetragen werden</div>
-                </li>
-            </ul>
-            <div style="text-align: center; font-size: 2rem; font-weight: 600; color: var(--primary-blue); margin-top: 3rem; padding: 2rem; background: var(--white); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
-                Viele Kanzleien steuern im Blindflug – mit hohem Aufwand und ungenutztem Potenzial.
+            <div class="section-header">
+                <h2>Das Problem im Kanzleialltag</h2>
+                <p>Sie kennen das vielleicht:</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>❌ Unklare Aufgabenverteilung</h3>
+                    <p>Es ist unklar, <strong>wer was wann erledigt</strong> – Abstimmungen kosten täglich Zeit und Nerven</p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ Mandatsrentabilität ist Ratespiel</h3>
+                    <p><strong>Mandatsrentabilität</strong> ist ein Ratespiel – echte Zahlen fehlen</p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ Bauchgefühl-Entscheidungen</h3>
+                    <p>Entscheidungen basieren oft auf <strong>Gefühl statt auf Daten</strong></p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ Mühsame Datensammlung</h3>
+                    <p>Für jede Auswertung müssen Daten aus unterschiedlichen Quellen mühsam zusammengetragen werden</p>
+                </div>
+            </div>
+            <div class="warning-banner">
+                <p>
+                    <span class="warning-emoji">⚠️</span>
+                    Viele Kanzleien steuern im Blindflug – mit hohem Aufwand und ungenutztem Potenzial.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Solution Section -->
-    <section class="section section-blue" id="solution">
+    <section class="section solution">
         <div class="container">
-            <h2>Die Lösung: en[ai]bler – Klarheit statt Chaos</h2>
-            <p class="section-subtitle">Mit <strong>en[ai]bler</strong> erhalten Sie:</p>
-            <ul class="features-list">
-                <li>
-                    <span class="check-icon">✅</span>
-                    <div class="feature-text">Übersichtliche Dashboards für Mandatsrentabilität, Mitarbeiterauslastung und Kanzleistruktur</div>
-                </li>
-                <li>
-                    <span class="check-icon">✅</span>
-                    <div class="feature-text">Relevante Kennzahlen <strong>in Echtzeit direkt aus DATEV</strong></div>
-                </li>
-                <li>
-                    <span class="check-icon">✅</span>
-                    <div class="feature-text">Frühwarnsysteme bei Überlastung, Unwirtschaftlichkeit oder Auslastungslücken</div>
-                </li>
-                <li>
-                    <span class="check-icon">✅</span>
-                    <div class="feature-text">Automatisierte Reports für klare Entscheidungen – ohne Excel</div>
-                </li>
-                <li>
-                    <span class="check-icon">✅</span>
-                    <div class="feature-text">Praxisnahe Steuerung – entwickelt in einer aktiven DATEV-Kanzlei, nicht im Labor</div>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Results Section -->
-    <section class="section stats-section" id="results">
-        <div class="container">
-            <h2 style="color: var(--white);">Was Kanzleien mit en[ai]bler erreicht haben</h2>
-            <div class="stats-grid">
-                <div class="stat-item fade-in">
-                    <span class="stat-number">170.000 €</span>
-                    <div class="stat-label">Mehrumsatz durch Anpassung der Honorare an echte Mandatswerte</div>
+            <div class="section-header">
+                <h2>Die Lösung: en[ai]bler – Klarheit statt Chaos</h2>
+                <p>Mit <strong>en[ai]bler</strong> erhalten Sie:</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Übersichtliche Dashboards</h3>
+                    <p>Für Mandatsrentabilität, Mitarbeiterauslastung und Kanzleistruktur</p>
                 </div>
-                <div class="stat-item fade-in">
-                    <span class="stat-number">900</span>
-                    <div class="stat-label">Stunden gewonnene Kapazität durch bessere Ressourcensteuerung</div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Echtzeit-Kennzahlen</h3>
+                    <p>Relevante Kennzahlen <strong>in Echtzeit direkt aus DATEV</strong></p>
                 </div>
-                <div class="stat-item fade-in">
-                    <span class="stat-number">100%</span>
-                    <div class="stat-label">Transparenz über Aufgaben, Mandate und Auslastung – teamübergreifend</div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Frühwarnsysteme</h3>
+                    <p>Bei Überlastung, Unwirtschaftlichkeit oder Auslastungslücken</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Automatisierte Reports</h3>
+                    <p>Für klare Entscheidungen – ohne Excel</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Praxisnahe Steuerung</h3>
+                    <p>Entwickelt in einer aktiven DATEV-Kanzlei, nicht im Labor</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonial Section -->
-    <section class="section section-gray">
+    <section class="section results">
         <div class="container">
-            <div class="testimonial fade-in">
-                <div class="testimonial-text">
-                    "Nach sieben Jahren Excel-Listen haben wir endlich ein System, das uns auf einen Blick zeigt, wo wir stehen – und wo wir ansetzen müssen."
+            <div class="section-header">
+                <h2>Was Kanzleien mit en[ai]bler erreicht haben</h2>
+            </div>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-number">€170.000</div>
+                    <p><strong>Mehrumsatz</strong> durch Anpassung der Honorare an echte Mandatswerte</p>
                 </div>
-                <div class="testimonial-author">– Steuerberater, 16 Mitarbeitende</div>
+                <div class="result-card">
+                    <div class="result-number">900h</div>
+                    <p><strong>Gewonnene Kapazität</strong> durch bessere Ressourcensteuerung</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">100%</div>
+                    <p><strong>Transparenz</strong> über Aufgaben, Mandate und Auslastung – teamübergreifend</p>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p>Nach sieben Jahren Excel-Listen haben wir endlich ein System, das uns auf einen Blick zeigt, wo wir stehen – und wo wir ansetzen müssen.</p>
+                <p><strong>– Steuerberater, 16 Mitarbeitende</strong></p>
             </div>
         </div>
     </section>
 
-    <!-- How it Works Section -->
-    <section class="section">
+    <section class="section process">
         <div class="container">
-            <h2>So starten wir gemeinsam</h2>
-            <div class="steps-container">
-                <div class="step-item fade-in">
+            <div class="section-header">
+                <h2>So starten wir gemeinsam</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
                     <div class="step-number">1</div>
                     <h3>Kostenfreies Analysegespräch (30 Min.)</h3>
                     <p>Wir zeigen Ihnen live, wo in Ihrer Kanzlei Verbesserungspotenzial steckt.</p>
                 </div>
-                <div class="step-item fade-in">
+                <div class="process-step">
                     <div class="step-number">2</div>
                     <h3>Schnelle Einrichtung – ohne IT-Projekt</h3>
                     <p>en[ai]bler greift auf Ihre vorhandenen DATEV-Daten zu – keine Migration nötig.</p>
                 </div>
-                <div class="step-item fade-in">
+                <div class="process-step">
                     <div class="step-number">3</div>
                     <h3>Sofort sichtbare Ergebnisse</h3>
                     <p>Schon wenige Tage nach Einrichtung gewinnen Sie erste Erkenntnisse, die Wirkung zeigen.</p>
@@ -811,137 +665,65 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section cta-section" id="cta">
+    <section id="cta" class="section final-cta">
         <div class="container">
-            <h2>Jetzt kostenfreies Analysegespräch buchen</h2>
-            <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.95;">
-                Erfahren Sie, welche Mandate sich wirklich lohnen, wo Ressourcen verloren gehen, und wie Sie Ihre Kanzlei gezielt steuern können – auf Basis echter Zahlen.
-            </p>
-            <a href="https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/" class="btn btn-primary" target="_blank">
-                👉 Jetzt Termin vereinbaren
-            </a>
-            <div class="contact-info">
-                <p>📧 kontakt@enaibler.info | 📞 Rückruf innerhalb 24h</p>
+            <div class="cta-content">
+                <h2>Jetzt kostenfreies Analysegespräch buchen</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 20px;">Erfahren Sie, <strong>welche Mandate sich wirklich lohnen</strong>, wo <strong>Ressourcen verloren gehen</strong>, und wie Sie Ihre Kanzlei <strong>gezielt steuern können</strong> – auf Basis echter Zahlen.</p>
+                <a href="mailto:kontakt@enabler-software.de?subject=Kostenfreies%20Analysegespräch&body=Hallo,%0D%0A%0D%0AIch%20interessiere%20mich%20für%20ein%20kostenfreies%20Analysegespräch%20mit%20en[ai]bler.%0D%0A%0D%0AMeine%20Kontaktdaten:%0D%0AName:%0D%0AKanzlei:%0D%0ATelefon:%0D%0A%0D%0ABitte%20kontaktieren%20Sie%20mich%20für%20einen%20Termin.%0D%0A%0D%0AVielen%20Dank!" class="cta-large">👉 Jetzt Termin vereinbaren</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <div class="footer-logo">en[ai]bler</div>
-            <div class="footer-text">
-                Machen Sie sich und Ihr Unternehmen fit für die Herausforderungen von morgen.
-            </div>
+            <p>&copy; 2025 en[ai]bler. Entwickelt von Steuerberatern für Steuerberater.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #94a3b8;">Professionelle Kanzleisteuerung auf Basis Ihrer DATEV-Daten</p>
             <div class="footer-links">
-                <a href="#" onclick="openPopup('impressum'); return false;">Impressum</a>
-                <a href="#" onclick="openPopup('datenschutz'); return false;">Datenschutz</a>
+                <a href="javascript:void(0)" onclick="openModal()" style="color: #94a3b8;">Impressum & Datenschutz</a>
             </div>
         </div>
     </footer>
 
-    <!-- Impressum Popup -->
-    <div id="impressum-popup" class="popup-overlay">
-        <div class="popup-content">
-            <div class="popup-header">
-                <h2 class="popup-title">Impressum</h2>
-                <button class="popup-close" onclick="closePopup('impressum')">&times;</button>
-            </div>
-            <div class="popup-body">
-                <h3>Verantwortlich im Sinne des Pressegesetzes</h3>
-                <p>
-                    <strong>RSW Unternehmensberatung GmbH</strong><br>
-                    Heganger 14<br>
-                    D-96103 Hallstadt<br>
-                    Herr Azher Raschid<br>
-                    Tel. +49-951 – 9 15 15 0<br>
-                    Fax +49-951 – 9 15 15 11<br>
-                    E-Mail info@rswnext.de
-                </p>
+    <!-- Modal -->
+    <div id="impressumModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Impressum</h2>
+            <p><strong>Verantwortlich im Sinne des Pressegesetzes</strong></p>
+            <h3>RSW Unternehmensberatung GmbH<br>
+            Heganger 14<br>
+            D-96103 Hallstadt</h3>
+            
+            <p>Herr Azher Raschid<br>
+            Tel. +49-951 – 9 15 15 0<br>
+            Fax +49-951 – 9 15 15 11<br>
+            E-Mail info@rswnext.de</p>
 
-                <h3>Nach DL-InfoV und nach § 36 VSBG</h3>
-                <p>Die RSW Unternehmensberatung GmbH wird in der Rechtsform der Gesellschaft mit beschränkter Haftung (GmbH) betrieben und ist beim Amtsgericht Bamberg unter der Nummer HRB 8597 im Handelsregister eingetragen. Die Umsatzsteueridentifikations-Nr. lautet: DE132277241.</p>
-                
-                <p>Geschäftsführer ist Herr Azher Raschid</p>
-                
-                <p>Die Gesellschaft wird jeweils einzelvertretungsberechtigt durch den Geschäftsführer Herr Azher Raschid vertreten.</p>
-
-                <h3>Vermittlung/Schlichtung</h3>
-                <p>Es besteht keine Bereitschaft oder Verpflichtung an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle im Sinne des § 2 des Verbraucherstreitbeilegungsgesetz (VSBG) teilzunehmen.</p>
-
-                <h3>Anzuwendendes Recht und Erfüllungsort</h3>
-                <p>Für den Auftrag, seine Ausführung und die sich hieraus ergebenden Ansprüche gilt nur deutsches Recht. Erfüllungsort ist der Wohnsitz des Auftraggebers, wenn er nicht Kaufmann im Sinne des HGB ist, ansonsten der Sitz der RSW Unternehmensberatung GmbH.</p>
-
-                <h3>Urheberrecht</h3>
-                <p>Das Internet ist kein rechtsfreier Raum. Auch hier gelten Urheberrechte (UrhG: Urheberrechtsgesetz). Ein Verstoß gegen diese Rechte ist strafbar.</p>
-                
-                <p>Der Inhalt unserer Internetseiten ist urheberrechtlich geschützt. D.h. die RSW Unternehmensberatung GmbH hat das alleinige Verfügungsrecht darüber,</p>
-                <ul>
-                    <li>ob ihre Werke veröffentlicht werden dürfen.</li>
-                    <li>in welcher Art und Weise Werke veröffentlicht werden.</li>
-                    <li>zu welchem Zeitpunkt Werke erstmals veröffentlicht werden.</li>
-                    <li>ob bei der Verwertung der Werke der Name des Urhebers oder sein Pseudonym genannt werden müssen.</li>
-                </ul>
-                
-                <p>Das Urheberrecht verbietet ferner die Speicherung und Vervielfältigung von Bildmaterial oder Grafiken aus unseren Internetseiten.</p>
-
-                <h3>Haftungsausschluss</h3>
-                <h4>Inhalt des Onlineangebotes</h4>
-                <p>Die Inhalte dieser Internetseite sind ausschließlich dazu gedacht, als allgemeine Richtlinie und Orientierung für den persönlichen Interessensbereich des Benutzers zu dienen, wobei dieser für die Weiterverwendung der Informationen selbst verantwortlich ist. Die Informationen werden mit dem Grundverständnis gegeben, dass der Herausgeber auf diesem Weg keine rechtlichen, betriebswirtschaftlichen, steuerlichen oder andere professionellen Ratschläge bzw. Dienstleistungen erteilt.</p>
-                
-                <p>Der Herausgeber übernimmt keinerlei Gewähr für die Aktualität, Korrektheit, Vollständigkeit oder Qualität der bereitgestellten Informationen. Haftungsansprüche gegen den Herausgeber, welche sich auf Schäden beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen.</p>
-
-                <h4>Verweise und Links</h4>
-                <p>Sofern auf Verweisziele („Links") direkt oder indirekt verwiesen wird, die außerhalb des Verantwortungsbereiches des Herausgebers liegen, haftet für deren Inhalt und insbesondere für Schäden, die aus der Nutzung oder Nichtnutzung der dort dargebotenen Informationen entstehen, allein der Anbieter dieser Seiten, nicht derjenige, der über Links auf die jeweilige Veröffentlichung lediglich verweist.</p>
-
-                <h4>Urheber- und Kennzeichenrecht</h4>
-                <p>Alle innerhalb des Internetangebots genannten und ggf. durch Dritte geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten der jeweiligen eingetragenen Eigentümer.</p>
-
-                <h4>Rechtswirksamkeit dieses Haftungsausschlusses</h4>
-                <p>Dieser Haftungsausschluss ist als Teil des Internetangebotes zu betrachten, von dem aus auf diese Seite verwiesen wurde. Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden Rechtslage nicht, nicht mehr oder nicht vollständig entsprechen sollten, bleiben die übrigen Teile des Dokuments in ihrem Inhalt und ihrer Gültigkeit davon unberührt.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Datenschutz Popup -->
-    <div id="datenschutz-popup" class="popup-overlay">
-        <div class="popup-content">
-            <div class="popup-header">
-                <h2 class="popup-title">Datenschutzerklärung</h2>
-                <button class="popup-close" onclick="closePopup('datenschutz')">&times;</button>
-            </div>
-            <div class="popup-body">
-                <h3>Datenschutz</h3>
-                <p>Wir haben diese Datenschutzerklärung (Fassung 01.01.2022-122145256) verfasst, um Ihnen gemäß der Vorgaben der Datenschutz-Grundverordnung (EU) 2016/679 und anwendbaren nationalen Gesetzen zu erklären, welche personenbezogenen Daten (kurz Daten) wir als Verantwortliche – und die von uns beauftragten Auftragsverarbeiter (z. B. Provider) – verarbeiten, zukünftig verarbeiten werden und welche rechtmäßigen Möglichkeiten Sie haben.</p>
-
-                <h3>Verantwortliche Stelle</h3>
-                <p>
-                    <strong>RSW Unternehmensberatung GmbH</strong><br>
-                    Heganger 14<br>
-                    D-96103 Hallstadt<br>
-                    E-Mail: info@rswnext.de<br>
-                    Tel.: +49-951 – 9 15 15 0
-                </p>
-
-                <h3>Erhebung und Verarbeitung personenbezogener Daten</h3>
-                <p>Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist. Die Verarbeitung personenbezogener Daten unserer Nutzer erfolgt regelmäßig nur nach Einwilligung des Nutzers.</p>
-
-                <h3>Ihre Rechte</h3>
-                <p>Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden sind, können Sie sich bei der Aufsichtsbehörde beschweren.</p>
-
-                <h3>Kontakt</h3>
-                <p>Falls Sie Fragen zum Datenschutz haben, schreiben Sie uns gerne eine E-Mail oder wenden Sie sich direkt an die für den Datenschutz verantwortliche Person in unserer Organisation.</p>
-            </div>
+            <h3>Nach DL-InfoV (Dienstleistungs-Informationspflichten-Verordnung) und nach § 36 VSBG (Verbraucherstreitbeilegungsgesetz)</h3>
+            
+            <p>Die RSW Unternehmensberatung GmbH wird in der Rechtsform der Gesellschaft mit beschränkter Haftung (GmbH) betrieben und ist beim Amtsgericht Bamberg unter der Nummer HRB 8597 im Handelsregister eingetragen. Die Umsatzsteueridentifikations-Nr. lautet: DE132277241.</p>
+            
+            <p>Geschäftsführer ist Herr Azher Raschid</p>
+            
+            <p>Die Gesellschaft wird jeweils einzelvertretungsberechtigt durch den Geschäftsführer Herr Azher Raschid vertreten.</p>
+            
+            <h3>Vermittlung/Schlichtung:</h3>
+            <p>Es besteht keine Bereitschaft oder Verpflichtung an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle im Sinne des § 2 des Verbraucherstreitbeilegungsgesetz (VSBG) teilzunehmen.</p>
         </div>
     </div>
 
     <script>
-        // Smooth scrolling for anchor links (exclude empty anchors)
-        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') {
+                    e.preventDefault();
+                    return;
+                }
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
@@ -951,63 +733,28 @@
             });
         });
 
-        // Fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Modal functions
+        function openModal() {
+            document.getElementById('impressumModal').style.display = 'block';
+        }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+        function closeModal() {
+            document.getElementById('impressumModal').style.display = 'none';
+        }
 
-        // Observe all elements with fade-in class
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Popup functions
-        function openPopup(type) {
-            const popup = document.getElementById(type + '-popup');
-            if (popup) {
-                popup.classList.add('active');
-                document.body.style.overflow = 'hidden';
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('impressumModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
             }
         }
 
-        function closePopup(type) {
-            const popup = document.getElementById(type + '-popup');
-            if (popup) {
-                popup.classList.remove('active');
-                document.body.style.overflow = 'auto';
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
             }
-        }
-
-        // Wait for DOM to load before adding event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            // Close popup when clicking on overlay
-            document.querySelectorAll('.popup-overlay').forEach(overlay => {
-                overlay.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.classList.remove('active');
-                        document.body.style.overflow = 'auto';
-                    }
-                });
-            });
-
-            // Close popup with ESC key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    document.querySelectorAll('.popup-overlay.active').forEach(popup => {
-                        popup.classList.remove('active');
-                        document.body.style.overflow = 'auto';
-                    });
-                }
-            });
         });
     </script>
 </body>
