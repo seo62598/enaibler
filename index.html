@@ -120,20 +120,17 @@
             position: relative;
         }
 
-        .hero-placeholder-image {
+        .hero-actual-image {
             width: 100%;
             max-width: 500px;
-            height: 350px;
-            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            height: auto;
             border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            color: #64748b;
-            font-size: 1.2rem;
-            font-weight: 500;
-            border: 2px dashed #cbd5e1;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-actual-image:hover {
+            transform: translateY(-5px);
         }
 
         /* Section Styles */
@@ -514,10 +511,7 @@
                     <a href="#cta" class="cta-button">Jetzt Termin vereinbaren</a>
                 </div>
                 <div class="hero-image">
-                    <div class="hero-placeholder-image">
-                        📊 Dashboard Vorschau<br>
-                        <small>(Bild hier einfügen)</small>
-                    </div>
+                    <img src="hero1.png" alt="en[ai]bler Dashboard Übersicht" class="hero-actual-image">
                 </div>
             </div>
         </div>
