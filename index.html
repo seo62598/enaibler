@@ -15,8 +15,8 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            color: #000000;
+            background-color: #F2F2F2;
         }
 
         .container {
@@ -27,7 +27,7 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #22374A 0%, #2DB8AD 100%);
             color: white;
             padding: 1rem 0;
             position: sticky;
@@ -49,7 +49,7 @@
         }
 
         .cta-button {
-            background: #f59e0b;
+            background: #2DB8AD;
             color: white;
             padding: 12px 24px;
             text-decoration: none;
@@ -61,14 +61,14 @@
         }
 
         .cta-button:hover {
-            background: #d97706;
+            background: #22374A;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 4px 12px rgba(45, 184, 173, 0.3);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+            background: linear-gradient(135deg, #22374A 0%, #2DB8AD 50%, #A6E7E1 100%);
             color: white;
             padding: 80px 0;
             position: relative;
@@ -105,14 +105,14 @@
         .hero-text .subtitle {
             font-size: 1.3rem;
             margin-bottom: 30px;
-            color: #e0f2fe;
+            color: #A6E7E1;
             font-weight: 500;
         }
 
         .hero-text p {
             font-size: 1.1rem;
             margin-bottom: 30px;
-            color: #f0f9ff;
+            color: #F2F2F2;
         }
 
         .hero-image {
@@ -133,6 +133,52 @@
             transform: translateY(-5px);
         }
 
+        /* Image Slider */
+        .image-slider {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .slider-images {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .slider-image {
+            width: 100%;
+            height: auto;
+            display: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .slider-image.active {
+            display: block;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: #A6E7E1;
+        }
+
         /* Section Styles */
         .section {
             padding: 80px 0;
@@ -146,12 +192,12 @@
         .section-header h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #1e40af;
+            color: #22374A;
         }
 
         .section-header p {
             font-size: 1.2rem;
-            color: #64748b;
+            color: #000000;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -175,14 +221,14 @@
         }
 
         .problem-card {
-            background: #fef8f8;
+            background: #F2F2F2;
             padding: 30px;
             border-radius: 12px;
-            border-left: 4px solid #f87171;
+            border-left: 4px solid #2DB8AD;
         }
 
         .problem-card h3 {
-            color: #374151;
+            color: #22374A;
             margin-bottom: 15px;
             font-size: 1.2rem;
             display: flex;
@@ -192,7 +238,7 @@
 
         /* Solution Section */
         .solution {
-            background: #f8fafc;
+            background: #F2F2F2;
         }
 
         .features-grid {
@@ -206,7 +252,7 @@
             background: white;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(34, 55, 74, 0.1);
             transition: transform 0.3s ease;
         }
 
@@ -217,7 +263,7 @@
         .feature-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #10b981, #059669);
+            background: linear-gradient(135deg, #2DB8AD, #22374A);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -247,19 +293,19 @@
         .result-card {
             text-align: center;
             padding: 30px;
-            background: linear-gradient(135deg, #fef3c7, #fbbf24);
+            background: linear-gradient(135deg, #A6E7E1, #2DB8AD);
             border-radius: 12px;
         }
 
         .result-number {
             font-size: 2.5rem;
             font-weight: bold;
-            color: #92400e;
+            color: #22374A;
             margin-bottom: 10px;
         }
 
         .testimonial {
-            background: #f1f5f9;
+            background: #F2F2F2;
             padding: 40px;
             border-radius: 12px;
             margin-top: 40px;
@@ -271,7 +317,7 @@
         .testimonial::before {
             content: '"';
             font-size: 4rem;
-            color: #cbd5e1;
+            color: #A6E7E1;
             position: absolute;
             top: -10px;
             left: 20px;
@@ -279,7 +325,7 @@
 
         /* Process Section */
         .process {
-            background: #f8fafc;
+            background: #F2F2F2;
         }
 
         .process-steps {
@@ -294,14 +340,14 @@
             padding: 30px;
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(34, 55, 74, 0.1);
             position: relative;
         }
 
         .step-number {
             width: 50px;
             height: 50px;
-            background: #1e40af;
+            background: #22374A;
             color: white;
             border-radius: 50%;
             display: flex;
@@ -314,7 +360,7 @@
 
         /* CTA Section */
         .final-cta {
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            background: linear-gradient(135deg, #22374A, #2DB8AD);
             color: white;
             text-align: center;
         }
@@ -330,7 +376,7 @@
         }
 
         .cta-large {
-            background: #f59e0b;
+            background: #2DB8AD;
             color: white;
             padding: 20px 40px;
             font-size: 1.2rem;
@@ -343,14 +389,14 @@
         }
 
         .cta-large:hover {
-            background: #d97706;
+            background: #22374A;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 8px 25px rgba(45, 184, 173, 0.3);
         }
 
         /* Footer */
         footer {
-            background: #1e293b;
+            background: #22374A;
             color: white;
             padding: 40px 0;
             text-align: center;
@@ -431,12 +477,12 @@
         }
 
         .modal h2 {
-            color: #1e40af;
+            color: #22374A;
             margin-bottom: 20px;
         }
 
         .modal h3 {
-            color: #374151;
+            color: #22374A;
             margin: 20px 0 10px 0;
         }
 
@@ -451,25 +497,25 @@
         }
 
         .footer-links a {
-            color: #94a3b8;
+            color: #A6E7E1;
             text-decoration: none;
             margin: 0 15px;
             font-size: 0.9rem;
         }
 
         .warning-banner {
-            background: linear-gradient(135deg, #fef3c7, #fbbf24);
+            background: linear-gradient(135deg, #A6E7E1, #2DB8AD);
             padding: 20px;
             border-radius: 10px;
             margin: 30px 0;
             text-align: center;
-            border-left: 4px solid #f59e0b;
-            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.2);
+            border-left: 4px solid #22374A;
+            box-shadow: 0 4px 15px rgba(45, 184, 173, 0.2);
         }
 
         .warning-banner p {
             font-size: 1.2rem;
-            color: #92400e;
+            color: #22374A;
             font-weight: 600;
             margin: 0;
             display: flex;
@@ -483,12 +529,21 @@
             font-size: 1.4rem;
         }
 
+        /* A/B Test Styles */
+        .ab-test-variant {
+            display: none;
+        }
+
+        .ab-test-variant.active {
+            display: block;
+        }
+
         /* Utility Classes */
         .text-center { text-align: center; }
         .mb-20 { margin-bottom: 20px; }
         .mb-40 { margin-bottom: 40px; }
         .bold { font-weight: bold; }
-        .highlight { color: #f59e0b; }
+        .highlight { color: #2DB8AD; }
     </style>
 </head>
 <body>
@@ -505,13 +560,34 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Wissen Sie, wo Ihre Kanzlei wirklich Geld verdient?</h1>
+                    <!-- A/B Test Headlines -->
+                    <div id="headline-variant-1" class="ab-test-variant">
+                        <h1>Haben Sie den vollen Überblick über Ihre Kanzleiabläufe?</h1>
+                    </div>
+                    <div id="headline-variant-2" class="ab-test-variant">
+                        <h1>Wissen Sie, welche Mitarbeitenden überlastet sind – und welche nicht?</h1>
+                    </div>
+                    <div id="headline-variant-3" class="ab-test-variant">
+                        <h1>Wie gut ist Ihre Kanzlei wirklich aufgestellt – messbar, nicht gefühlt?</h1>
+                    </div>
+                    
                     <p class="subtitle">Von Steuerberatern für Steuerberater – eine Software, die Kanzleien messbar besser macht.</p>
                     <p>Schluss mit Excel-Chaos, Unsicherheiten und verlorenen Potenzialen. <strong>en[ai]bler</strong> liefert Ihnen die entscheidungsrelevanten Zahlen auf Knopfdruck – direkt aus Ihren DATEV-Daten. Ohne IT-Projekt, ohne Schulungs-Marathon.</p>
                     <a href="#cta" class="cta-button">Jetzt Termin vereinbaren</a>
                 </div>
                 <div class="hero-image">
-                    <img src="hero1.png" alt="en[ai]bler Dashboard Übersicht" class="hero-actual-image">
+                    <div class="image-slider">
+                        <div class="slider-images">
+                            <img src="hero1.png" alt="en[ai]bler Dashboard Übersicht" class="slider-image active">
+                            <img src="hero2.png" alt="en[ai]bler Mandatsanalyse" class="slider-image">
+                            <img src="hero3.png" alt="en[ai]bler Kapazitätsplanung" class="slider-image">
+                        </div>
+                        <div class="slider-controls">
+                            <div class="slider-dot active" onclick="showSlide(0)"></div>
+                            <div class="slider-dot" onclick="showSlide(1)"></div>
+                            <div class="slider-dot" onclick="showSlide(2)"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -664,7 +740,7 @@
             <div class="cta-content">
                 <h2>Jetzt kostenfreies Analysegespräch buchen</h2>
                 <p style="font-size: 1.2rem; margin-bottom: 20px;">Erfahren Sie, <strong>welche Mandate sich wirklich lohnen</strong>, wo <strong>Ressourcen verloren gehen</strong>, und wie Sie Ihre Kanzlei <strong>gezielt steuern können</strong> – auf Basis echter Zahlen.</p>
-                <a href="mailto:kontakt@enabler-software.de?subject=Kostenfreies%20Analysegespräch&body=Hallo,%0D%0A%0D%0AIch%20interessiere%20mich%20für%20ein%20kostenfreies%20Analysegespräch%20mit%20en[ai]bler.%0D%0A%0D%0AMeine%20Kontaktdaten:%0D%0AName:%0D%0AKanzlei:%0D%0ATelefon:%0D%0A%0D%0ABitte%20kontaktieren%20Sie%20mich%20für%20einen%20Termin.%0D%0A%0D%0AVielen%20Dank!" class="cta-large">👉 Jetzt Termin vereinbaren</a>
+                <a href="https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/" class="cta-large" target="_blank">👉 Jetzt Termin vereinbaren</a>
             </div>
         </div>
     </section>
@@ -672,9 +748,9 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 en[ai]bler. Entwickelt von Steuerberatern für Steuerberater.</p>
-            <p style="margin-top: 10px; font-size: 0.9rem; color: #94a3b8;">Professionelle Kanzleisteuerung auf Basis Ihrer DATEV-Daten</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #A6E7E1;">Professionelle Kanzleisteuerung auf Basis Ihrer DATEV-Daten</p>
             <div class="footer-links">
-                <a href="javascript:void(0)" onclick="openModal()" style="color: #94a3b8;">Impressum & Datenschutz</a>
+                <a href="javascript:void(0)" onclick="openModal()">Impressum & Datenschutz</a>
             </div>
         </div>
     </footer>
@@ -708,6 +784,53 @@
     </div>
 
     <script>
+        // A/B Test Logic
+        function initializeABTest() {
+            const variants = ['headline-variant-1', 'headline-variant-2', 'headline-variant-3'];
+            const randomVariant = Math.floor(Math.random() * variants.length);
+            
+            // Hide all variants first
+            variants.forEach(variant => {
+                document.getElementById(variant).classList.remove('active');
+            });
+            
+            // Show selected variant
+            document.getElementById(variants[randomVariant]).classList.add('active');
+            
+            // Track which variant was shown (for analytics)
+            console.log('A/B Test Variant shown:', variants[randomVariant]);
+            
+            // Optional: Store in localStorage for consistent experience
+            localStorage.setItem('enabler_ab_variant', variants[randomVariant]);
+        }
+
+        // Image Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider-image');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show selected slide
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const nextIndex = (currentSlide + 1) % slides.length;
+            showSlide(nextIndex);
+        }
+
+        // Auto-advance slider every 4 seconds
+        function initializeSlider() {
+            setInterval(nextSlide, 4000);
+        }
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -750,6 +873,18 @@
                 closeModal();
             }
         });
-    </script>
-</body>
-</html>
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeABTest();
+            initializeSlider();
+        });
+
+        // Track CTA clicks for analytics
+        document.querySelectorAll('.cta-button, .cta-large').forEach(button => {
+            button.addEventListener('click', function() {
+                const variant = localStorage.getItem('enabler_ab_variant') || 'unknown';
+                console.log('CTA clicked with variant:', variant);
+                // Here you could send data to your analytics platform
+            });
+        });
