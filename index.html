@@ -98,7 +98,7 @@
         }
 
         .hero-text h1 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
             font-weight: 700;
@@ -114,7 +114,7 @@
         .hero-text p {
             font-size: 1.1rem;
             margin-bottom: 30px;
-            color: #fff;
+            color: #F2F2F2;
         }
 
         .hero-image {
@@ -551,7 +551,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">en[ai]bler</div>
-                <a href="https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/" class="cta-button" target="_blank">Kostenfreies Analysegespräch</a>
+                <a href="#" class="cta-button" target="_blank">Kostenfreies Analysegespräch</a>
             </div>
         </div>
     </header>
@@ -560,20 +560,20 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <!-- A/B Test Headlines -->
+                    <!-- A/B Test Headlines - Text wird dynamisch aus CONFIG geladen -->
                     <div id="headline-variant-1" class="ab-test-variant">
-                        <h1>Haben Sie den vollen Überblick über Ihre Kanzleiabläufe?</h1>
+                        <h1></h1>
                     </div>
                     <div id="headline-variant-2" class="ab-test-variant">
-                        <h1>Wissen Sie, welche Mitarbeitenden überlastet sind – und welche nicht?</h1>
+                        <h1></h1>
                     </div>
                     <div id="headline-variant-3" class="ab-test-variant">
-                        <h1>Wie gut ist Ihre Kanzlei wirklich aufgestellt – messbar, nicht gefühlt?</h1>
+                        <h1></h1>
                     </div>
                     
                     <p class="subtitle">Von Steuerberatern für Steuerberater – eine Software, die Kanzleien messbar besser macht.</p>
                     <p>Schluss mit Excel-Chaos, Unsicherheiten und verlorenen Potenzialen. <strong>en[ai]bler</strong> liefert Ihnen die entscheidungsrelevanten Zahlen auf Knopfdruck – direkt aus Ihren DATEV-Daten. Ohne IT-Projekt, ohne Schulungs-Marathon.</p>
-                    <a href="https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/" class="cta-button" target="_blank">Jetzt Termin vereinbaren</a>
+                    <a href="#" class="cta-button" target="_blank">Jetzt Termin vereinbaren</a>
                 </div>
                 <div class="hero-image">
                     <div class="image-slider">
@@ -740,7 +740,7 @@
             <div class="cta-content">
                 <h2>Jetzt kostenfreies Analysegespräch buchen</h2>
                 <p style="font-size: 1.2rem; margin-bottom: 20px;">Erfahren Sie, <strong>welche Mandate sich wirklich lohnen</strong>, wo <strong>Ressourcen verloren gehen</strong>, und wie Sie Ihre Kanzlei <strong>gezielt steuern können</strong> – auf Basis echter Zahlen.</p>
-                <a href="https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/" class="cta-large" target="_blank">👉 Jetzt Termin vereinbaren</a>
+                <a href="#" class="cta-large" target="_blank">👉 Jetzt Termin vereinbaren</a>
             </div>
         </div>
     </section>
@@ -784,30 +784,105 @@
     </div>
 
     <script>
+        // ===========================================
+        // KONFIGURATION - Hier können alle wichtigen Variablen angepasst werden
+        // ===========================================
+        
+        const CONFIG = {
+            // Booking-Link (wird automatisch mit UTM-Parametern erweitert)
+            bookingBaseUrl: 'https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/',
+            
+            // A/B Test Headlines mit UTM-Codes
+            headlines: [
+                {
+                    id: 'headline-variant-1',
+                    text: 'Haben Sie den vollen Überblick über Ihre Kanzleiabläufe?',
+                    utmCampaign: 'enabler_landing',
+                    utmSource: 'website',
+                    utmMedium: 'cta_button',
+                    utmContent: 'ueberblick_kanzleiablaeufe'
+                },
+                {
+                    id: 'headline-variant-2', 
+                    text: 'Wissen Sie, welche Mitarbeitenden überlastet sind – und welche nicht?',
+                    utmCampaign: 'enabler_landing',
+                    utmSource: 'website', 
+                    utmMedium: 'cta_button',
+                    utmContent: 'mitarbeitende_ueberlastung'
+                },
+                {
+                    id: 'headline-variant-3',
+                    text: 'Wie gut ist Ihre Kanzlei wirklich aufgestellt – messbar, nicht gefühlt?',
+                    utmCampaign: 'enabler_landing',
+                    utmSource: 'website',
+                    utmMedium: 'cta_button', 
+                    utmContent: 'kanzlei_aufstellung_messbar'
+                }
+            ]
+        };
+
+        // Globale Variable für aktuell ausgewählte Headline
+        let currentHeadlineVariant = null;
+
+        // Funktion zum Erstellen des Booking-Links mit UTM-Parametern
+        function createBookingUrl(headlineData) {
+            const url = new URL(CONFIG.bookingBaseUrl);
+            url.searchParams.set('utm_campaign', headlineData.utmCampaign);
+            url.searchParams.set('utm_source', headlineData.utmSource);
+            url.searchParams.set('utm_medium', headlineData.utmMedium);
+            url.searchParams.set('utm_content', headlineData.utmContent);
+            url.searchParams.set('utm_term', 'enabler_kanzlei_software');
+            return url.toString();
+        }
+
+        // Funktion zum Aktualisieren aller CTA-Links
+        function updateCTALinks() {
+            if (!currentHeadlineVariant) return;
+            
+            const bookingUrl = createBookingUrl(currentHeadlineVariant);
+            
+            // Alle CTA-Buttons aktualisieren
+            document.querySelectorAll('.cta-button, .cta-large').forEach(button => {
+                button.href = bookingUrl;
+            });
+            
+            console.log('CTA Links updated with UTM parameters:', bookingUrl);
+        }
+
         // A/B Test Logic
         function initializeABTest() {
-            const variants = ['headline-variant-1', 'headline-variant-2', 'headline-variant-3'];
-            const randomVariant = Math.floor(Math.random() * variants.length);
+            const randomIndex = Math.floor(Math.random() * CONFIG.headlines.length);
+            const selectedHeadline = CONFIG.headlines[randomIndex];
+            currentHeadlineVariant = selectedHeadline;
             
             // Hide all variants first
-            variants.forEach(variant => {
-                const element = document.getElementById(variant);
+            CONFIG.headlines.forEach(headline => {
+                const element = document.getElementById(headline.id);
                 if (element) {
                     element.classList.remove('active');
+                    // Headline-Text setzen
+                    const h1Element = element.querySelector('h1');
+                    if (h1Element) {
+                        h1Element.textContent = headline.text;
+                    }
                 }
             });
             
             // Show selected variant
-            const selectedElement = document.getElementById(variants[randomVariant]);
+            const selectedElement = document.getElementById(selectedHeadline.id);
             if (selectedElement) {
                 selectedElement.classList.add('active');
             }
             
-            // Track which variant was shown (for analytics)
-            console.log('A/B Test Variant shown:', variants[randomVariant]);
+            // CTA-Links mit UTM-Parametern aktualisieren
+            updateCTALinks();
             
-            // Optional: Store in localStorage for consistent experience
-            localStorage.setItem('enabler_ab_variant', variants[randomVariant]);
+            // Track which variant was shown (for analytics)
+            console.log('A/B Test Variant shown:', selectedHeadline.id, 'UTM Content:', selectedHeadline.utmContent);
+            
+            // Store in localStorage for consistent experience
+            localStorage.setItem('enabler_ab_variant', selectedHeadline.id);
+            localStorage.setItem('enabler_ab_utm_content', selectedHeadline.utmContent);
         }
 
         // Image Slider Logic
@@ -902,8 +977,14 @@
         document.querySelectorAll('.cta-button, .cta-large').forEach(button => {
             button.addEventListener('click', function() {
                 const variant = localStorage.getItem('enabler_ab_variant') || 'unknown';
+                const utmContent = localStorage.getItem('enabler_ab_utm_content') || 'unknown';
+                
                 console.log('CTA clicked with variant:', variant);
-                // Here you could send data to your analytics platform
+                console.log('UTM Content:', utmContent);
+                console.log('Full URL:', this.href);
+                
+                // Hier können Sie zusätzliche Analytics-Daten senden
+                // Beispiel: gtag('event', 'click', { event_category: 'CTA', event_label: utmContent });
             });
         });
     </script>
