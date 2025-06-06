@@ -806,8 +806,8 @@
             // Track which variant was shown (for analytics)
             console.log('A/B Test Variant shown:', variants[randomVariant]);
             
-            // Update CTA links after variant is shown
-            setTimeout(updateCTALinks, 100);
+            // Optional: Store in localStorage for consistent experience
+            localStorage.setItem('enabler_ab_variant', variants[randomVariant]);
         }
 
         // Image Slider Logic
@@ -894,40 +894,16 @@
 
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            initializeABTest(); // This now includes updateCTALinks()
+            initializeABTest();
             initializeSlider();
         });
-
-        // UTM Tracking - Add current H1 title to all CTA buttons
-        function updateCTALinks() {
-            // Get the currently visible H1 title
-            const activeHeadline = document.querySelector('.ab-test-variant.active h1');
-            if (!activeHeadline) {
-                console.log('No active headline found');
-                return;
-            }
-            
-            // Convert title to UTM parameter (URL-encoded)
-            const titleText = activeHeadline.textContent.trim();
-            const utmTitle = encodeURIComponent(titleText);
-            
-            console.log('Active title:', titleText);
-            console.log('UTM parameter:', utmTitle);
-            
-            // Update all CTA button links
-            document.querySelectorAll('.cta-button, .cta-large').forEach(button => {
-                const baseUrl = 'https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/';
-                const newUrl = `${baseUrl}?title=${utmTitle}`;
-                button.href = newUrl;
-                console.log('Updated button URL:', newUrl);
-            });
-        }
 
         // Track CTA clicks for analytics
         document.querySelectorAll('.cta-button, .cta-large').forEach(button => {
             button.addEventListener('click', function() {
-                console.log('CTA clicked');
-                console.log('CTA URL with UTM:', this.href);
+                const variant = localStorage.getItem('enabler_ab_variant') || 'unknown';
+                console.log('CTA clicked with variant:', variant);
+                // Here you could send data to your analytics platform
             });
         });
     </script>
