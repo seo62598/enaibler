@@ -105,7 +105,7 @@
         }
 
         .hero-text .subtitle {
-            font-size: 1.3rem;
+            font-size: 2rem;
             margin-bottom: 30px;
             color: #A6E7E1;
             font-weight: 500;
@@ -555,7 +555,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">en[ai]bler</div>
-                <a href="#cta" class="cta-button">Kostenfreies Analysegespräch</a>
+                <a href="https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/" class="cta-button" target="_blank">Kostenfreies Analysegespräch</a>
             </div>
         </div>
     </header>
@@ -577,7 +577,7 @@
                     
                     <p class="subtitle">Von Steuerberatern für Steuerberater – eine Software, die Kanzleien messbar besser macht.</p>
                     <p>Schluss mit Excel-Chaos, Unsicherheiten und verlorenen Potenzialen. <strong>en[ai]bler</strong> liefert Ihnen die entscheidungsrelevanten Zahlen auf Knopfdruck – direkt aus Ihren DATEV-Daten. Ohne IT-Projekt, ohne Schulungs-Marathon.</p>
-                    <a href="#cta" class="cta-button">Jetzt Termin vereinbaren</a>
+                    <a href="https://outlook.office365.com/book/ENABLERKanzleiwertControllingundMonitoring@rswnext.de/" class="cta-button" target="_blank">Jetzt Termin vereinbaren</a>
                 </div>
                 <div class="hero-image">
                     <div class="image-slider">
@@ -587,9 +587,9 @@
                             <img src="hero3.png" alt="en[ai]bler Kapazitätsplanung" class="slider-image">
                         </div>
                         <div class="slider-controls">
-                            <div class="slider-dot active" onclick="showSlide(0)"></div>
-                            <div class="slider-dot" onclick="showSlide(1)"></div>
-                            <div class="slider-dot" onclick="showSlide(2)"></div>
+                            <div class="slider-dot active" onclick="goToSlide(0)"></div>
+                            <div class="slider-dot" onclick="goToSlide(1)"></div>
+                            <div class="slider-dot" onclick="goToSlide(2)"></div>
                         </div>
                     </div>
                 </div>
@@ -810,10 +810,23 @@
 
         // Image Slider Logic
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slider-image');
-        const dots = document.querySelectorAll('.slider-dot');
+        let slides = [];
+        let dots = [];
+        let sliderInterval;
+
+        function initializeSlider() {
+            slides = document.querySelectorAll('.slider-image');
+            dots = document.querySelectorAll('.slider-dot');
+            
+            if (slides.length === 0) return;
+            
+            // Start auto-advance slider every 4 seconds
+            sliderInterval = setInterval(nextSlide, 4000);
+        }
 
         function showSlide(index) {
+            if (slides.length === 0) return;
+            
             // Hide all slides
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
@@ -826,33 +839,42 @@
         }
 
         function nextSlide() {
+            if (slides.length === 0) return;
             const nextIndex = (currentSlide + 1) % slides.length;
             showSlide(nextIndex);
         }
 
-        // Auto-advance slider every 4 seconds
-        function initializeSlider() {
-            setInterval(nextSlide, 4000);
+        // Manual slide navigation
+        function goToSlide(index) {
+            // Clear auto-advance when user manually navigates
+            clearInterval(sliderInterval);
+            showSlide(index);
+            // Restart auto-advance after 6 seconds
+            setTimeout(() => {
+                sliderInterval = setInterval(nextSlide, 4000);
+            }, 6000);
         }
 
         // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href === '#') {
+        function initializeSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') {
+                        e.preventDefault();
+                        return;
+                    }
                     e.preventDefault();
-                    return;
-                }
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
             });
-        });
+        }
 
         // Modal functions
         function openModal() {
@@ -882,6 +904,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             initializeABTest();
             initializeSlider();
+            initializeSmoothScrolling();
         });
 
         // Track CTA clicks for analytics
