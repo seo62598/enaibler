@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>en[ai]bler - Kanzlei-Software von Steuerberatern für Steuerberater</title>
-    <meta name="description" content="Schluss mit Excel-Chaos! en[ai]bler zeigt Ihnen die Rentabilität Ihrer Mandate und optimiert Ihre Kanzleisteuerung - direkt aus DATEV-Daten.">
     <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="description" content="Schluss mit Excel-Chaos! en[ai]bler zeigt Ihnen die Rentabilität Ihrer Mandate und optimiert Ihre Kanzleisteuerung - direkt aus DATEV-Daten.">
     <style>
         * {
             margin: 0;
@@ -50,7 +50,7 @@
         }
 
         .cta-button {
-            background: #ff6b35;
+            background: #FF7A00;
             color: white;
             padding: 12px 24px;
             text-decoration: none;
@@ -59,18 +59,18 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
         }
 
         .cta-button:hover {
-            background: #e55a2b;
+            background: #E66A00;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 6px 20px rgba(255, 122, 0, 0.4);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #22374A 0%, #2DB8AD 70%, #A6E7E1 100%);
+            background: linear-gradient(135deg, rgba(34, 55, 74, 0.8) 0%, rgba(45, 184, 173, 0.6) 50%, rgba(166, 231, 225, 0.4) 100%);
             color: white;
             padding: 80px 0;
             position: relative;
@@ -84,8 +84,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 0 0 L 10 0 M 0 0 L 0 10" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.1;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 0 0 L 10 0 M 0 0 L 0 10" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.2;
         }
 
         .hero-content {
@@ -120,19 +120,6 @@
         .hero-image {
             text-align: center;
             position: relative;
-        }
-
-        .hero-actual-image {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .hero-actual-image:hover {
-            transform: translateY(-5px);
         }
 
         /* Image Slider */
@@ -223,11 +210,11 @@
         }
 
         .problem-card {
-            background: white;
+            background: #A6E7E1;
             padding: 30px;
             border-radius: 12px;
             border-left: 4px solid #2DB8AD;
-            box-shadow: 0 2px 10px rgba(34, 55, 74, 0.08);
+            box-shadow: 0 2px 10px rgba(45, 184, 173, 0.1);
         }
 
         .problem-card h3 {
@@ -379,7 +366,7 @@
         }
 
         .cta-large {
-            background: #ff6b35;
+            background: #FF7A00;
             color: white;
             padding: 20px 40px;
             font-size: 1.2rem;
@@ -389,13 +376,13 @@
             display: inline-block;
             margin-top: 30px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 122, 0, 0.3);
         }
 
         .cta-large:hover {
-            background: #e55a2b;
+            background: #E66A00;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 10px 30px rgba(255, 122, 0, 0.4);
         }
 
         /* Footer */
@@ -416,6 +403,10 @@
 
             .hero-text h1 {
                 font-size: 2.5rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.5rem;
             }
 
             .section-header h2 {
@@ -505,16 +496,21 @@
             text-decoration: none;
             margin: 0 15px;
             font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
         }
 
         .warning-banner {
-            background: linear-gradient(135deg, #22374A, #2DB8AD);
+            background: linear-gradient(135deg, #A6E7E1, #2DB8AD);
             padding: 20px;
             border-radius: 10px;
             margin: 30px 0;
             text-align: center;
-            border-left: 4px solid #ff6b35;
-            box-shadow: 0 4px 15px rgba(34, 55, 74, 0.2);
+            border-left: 4px solid #22374A;
+            box-shadow: 0 4px 15px rgba(45, 184, 173, 0.2);
         }
 
         .warning-banner p {
@@ -587,9 +583,9 @@
                             <img src="hero3.png" alt="en[ai]bler Kapazitätsplanung" class="slider-image">
                         </div>
                         <div class="slider-controls">
-                            <div class="slider-dot active" data-slide="0"></div>
-                            <div class="slider-dot" data-slide="1"></div>
-                            <div class="slider-dot" data-slide="2"></div>
+                            <div class="slider-dot active" onclick="showSlide(0)"></div>
+                            <div class="slider-dot" onclick="showSlide(1)"></div>
+                            <div class="slider-dot" onclick="showSlide(2)"></div>
                         </div>
                     </div>
                 </div>
@@ -754,7 +750,7 @@
             <p>&copy; 2025 en[ai]bler. Entwickelt von Steuerberatern für Steuerberater.</p>
             <p style="margin-top: 10px; font-size: 0.9rem; color: #A6E7E1;">Professionelle Kanzleisteuerung auf Basis Ihrer DATEV-Daten</p>
             <div class="footer-links">
-                <a href="#" id="impressum-link">Impressum & Datenschutz</a>
+                <a href="javascript:void(0)" onclick="openModal()">Impressum & Datenschutz</a>
             </div>
         </div>
     </footer>
@@ -762,7 +758,7 @@
     <!-- Modal -->
     <div id="impressumModal" class="modal">
         <div class="modal-content">
-            <span class="close" id="modal-close">&times;</span>
+            <span class="close" onclick="closeModal()">&times;</span>
             <h2>Impressum</h2>
             <p><strong>Verantwortlich im Sinne des Pressegesetzes</strong></p>
             <h3>RSW Unternehmensberatung GmbH<br>
@@ -795,11 +791,17 @@
             
             // Hide all variants first
             variants.forEach(variant => {
-                document.getElementById(variant).classList.remove('active');
+                const element = document.getElementById(variant);
+                if (element) {
+                    element.classList.remove('active');
+                }
             });
             
             // Show selected variant
-            document.getElementById(variants[randomVariant]).classList.add('active');
+            const selectedElement = document.getElementById(variants[randomVariant]);
+            if (selectedElement) {
+                selectedElement.classList.add('active');
+            }
             
             // Track which variant was shown (for analytics)
             console.log('A/B Test Variant shown:', variants[randomVariant]);
@@ -810,149 +812,90 @@
 
         // Image Slider Logic
         let currentSlide = 0;
-        let slides = [];
-        let dots = [];
-        let sliderInterval;
-
-        function initializeSlider() {
-            slides = document.querySelectorAll('.slider-image');
-            dots = document.querySelectorAll('.slider-dot');
-            
-            if (slides.length === 0) return;
-            
-            // Start auto-advance slider every 4 seconds
-            sliderInterval = setInterval(nextSlide, 4000);
-        }
+        const slides = document.querySelectorAll('.slider-image');
+        const dots = document.querySelectorAll('.slider-dot');
 
         function showSlide(index) {
-            if (slides.length === 0) return;
-            
             // Hide all slides
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
             
             // Show selected slide
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
+            if (slides[index]) {
+                slides[index].classList.add('active');
+            }
+            if (dots[index]) {
+                dots[index].classList.add('active');
+            }
             
             currentSlide = index;
         }
 
         function nextSlide() {
-            if (slides.length === 0) return;
             const nextIndex = (currentSlide + 1) % slides.length;
             showSlide(nextIndex);
         }
 
-        // Manual slide navigation
-        function goToSlide(index) {
-            // Clear auto-advance when user manually navigates
-            clearInterval(sliderInterval);
-            showSlide(index);
-            // Restart auto-advance after 6 seconds
-            setTimeout(() => {
-                sliderInterval = setInterval(nextSlide, 4000);
-            }, 6000);
-        }
-
-        // Modal functions
-        function openModal() {
-            document.getElementById('impressumModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('impressumModal').style.display = 'none';
-        }
-
-        // Modal functions
-        function openModal() {
-            document.getElementById('impressumModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('impressumModal').style.display = 'none';
+        // Auto-advance slider every 4 seconds
+        function initializeSlider() {
+            if (slides.length > 0) {
+                setInterval(nextSlide, 4000);
+            }
         }
 
         // Smooth scrolling for anchor links
-        function initializeSmoothScrolling() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#') {
-                        e.preventDefault();
-                        return;
-                    }
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') {
                     e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
+                    return;
+                }
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
-        }
+        });
 
         // Modal functions
         function openModal() {
-            document.getElementById('impressumModal').style.display = 'block';
+            const modal = document.getElementById('impressumModal');
+            if (modal) {
+                modal.style.display = 'block';
+            }
         }
 
         function closeModal() {
-            document.getElementById('impressumModal').style.display = 'none';
-        }
-
-        // Modal functions
-        function openModal() {
-            document.getElementById('impressumModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('impressumModal').style.display = 'none';
+            const modal = document.getElementById('impressumModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
         }
 
         // Close modal when clicking outside of it
-        function initializeModalEvents() {
+        window.onclick = function(event) {
             const modal = document.getElementById('impressumModal');
-            const impressumLink = document.getElementById('impressum-link');
-            const closeBtn = document.getElementById('modal-close');
-            
-            // Open modal
-            impressumLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModal();
-            });
-            
-            // Close modal
-            closeBtn.addEventListener('click', closeModal);
-            
-            // Close when clicking outside
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // Close modal with Escape key
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape') {
-                    closeModal();
-                }
-            });
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
         }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
 
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initializeABTest();
             initializeSlider();
-            initializeSmoothScrolling();
-            initializeModalEvents();
-            
-            // Make functions globally available
-            window.goToSlide = goToSlide;
-            window.openModal = openModal;
-            window.closeModal = closeModal;
         });
 
         // Track CTA clicks for analytics
@@ -963,3 +906,6 @@
                 // Here you could send data to your analytics platform
             });
         });
+    </script>
+</body>
+</html>
